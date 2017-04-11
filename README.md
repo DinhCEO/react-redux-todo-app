@@ -2,7 +2,7 @@
 
 # React/Sass/Redux Boilerplate
 
-Boilerplate and guide for a React/Sass/Redux build.
+Boilerplate and guide for a React/Sass/Redux/material-ui build.
 
 ## Getting Started
 
