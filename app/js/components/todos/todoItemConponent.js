@@ -1,10 +1,4 @@
-/**
- * Created by dinhceo on 11/04/2017.
- */
 import React from 'react'
-import {connect} from 'react-redux'
-import {toggleTodo} from '../../actions/index'
-
 import {ListItem} from 'material-ui/List';
 import ActionInfo from 'material-ui/svg-icons/action/info';
 
@@ -19,7 +13,7 @@ class TodoItem extends React.Component {
 
     handleClick(index) {
         let {dispatch} = this.props;
-        dispatch(toggleTodo(index));
+        dispatch(index);
     }
 
     render() {
@@ -27,10 +21,10 @@ class TodoItem extends React.Component {
         return (
             <ListItem onClick={() => {
                 this.handleClick(index)
-            }} rightIcon={this.props.item.completed ? <ActionDone color={pinkA200} /> : <ActionInfo />}>
+            }} rightIcon={this.props.item.completed ? <ActionDone color={pinkA200}/> : <ActionInfo />}>
                 {this.props.item.text}
             </ListItem>
         )
     }
 }
-export default connect()(TodoItem);
+export default TodoItem;

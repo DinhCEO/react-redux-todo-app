@@ -1,3 +1,1 @@
-/**
- * Created by dinhceo on 11/04/2017.
- */
+export {default as  LayoutComponent} from './appContainer';

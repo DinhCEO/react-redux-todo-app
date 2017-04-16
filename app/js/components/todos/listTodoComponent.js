@@ -1,8 +1,4 @@
-/**
- * Created by dinhceo on 11/04/2017.
- */
 import React from 'react';
-import {connect} from 'react-redux'
 import TodoItem from './todoItemConponent'
 
 import {VisibilityFilters} from '../../actions/searchTodoType'
@@ -21,7 +17,8 @@ class ListTodo extends React.Component {
                 <List>
                     {
                         this.props.todos.map((todo, index) => {
-                            return <TodoItem indexItem={index} key={index} item={todo}/>
+                            return <TodoItem dispatch={this.props.toggleTodo} indexItem={index} key={index}
+                                             item={todo}/>
                         })
                     }
                 </List>
@@ -49,4 +46,4 @@ function mapStateToProps(state) {
 }
 
 
-export default connect(mapStateToProps)(ListTodo);
+export default ListTodo;

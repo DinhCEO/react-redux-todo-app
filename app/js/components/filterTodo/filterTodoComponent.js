@@ -1,10 +1,4 @@
-/**
- * Created by dinhceo on 11/04/2017.
- */
 import React from 'react';
-import {connect} from 'react-redux';
-import {setVisibilityFilter} from '../../actions/index'
-import {resetTodo} from '../../actions/index'
 import {VisibilityFilters} from '../../actions/searchTodoType'
 import FlatButton from 'material-ui/FlatButton';
 import RaisedButton from 'material-ui/RaisedButton';
@@ -19,13 +13,13 @@ class FilterTodo extends React.Component {
     }
 
     handleClick(filter) {
-        let {dispatch} = this.props;
-        dispatch(setVisibilityFilter(filter));
+        let {dispatch_filter} = this.props;
+        dispatch_filter(filter);
     }
 
     handleReset() {
-        let {dispatch} = this.props;
-        dispatch(resetTodo());
+        let {dispatch_reset} = this.props;
+        dispatch_reset();
     }
 
 
@@ -53,4 +47,4 @@ class FilterTodo extends React.Component {
     }
 }
 
-export default connect()(FilterTodo);
+export default FilterTodo;

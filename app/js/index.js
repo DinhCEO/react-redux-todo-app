@@ -1,23 +1,24 @@
 /**
  * Created by dinhceo on 11/04/2017.
  */
-import 'whatwg-fetch';
-import React from 'react';
-import ReactDOM from 'react-dom';
-import injectTapEventPlugin from 'react-tap-event-plugin';
+import 'whatwg-fetch'
+import React from 'react'
+import ReactDOM from 'react-dom'
+import thunk from 'redux-thunk'
+import injectTapEventPlugin from 'react-tap-event-plugin'
 import reducers from './reducers/index'
-import {createStore} from 'redux'
+import Root from './routes'
+import {createStore, applyMiddleware} from 'redux'
 import {Provider} from 'react-redux'
 import {addTodo, toggleTodo} from './actions/index'
-import App from './components/appComponent'
-import {MuiThemeProvider, getMuiTheme} from 'material-ui/styles';
-import {teal900} from 'material-ui/styles/colors';
+import {MuiThemeProvider, getMuiTheme} from 'material-ui/styles'
+import {teal900} from 'material-ui/styles/colors'
 
-import {IntlProvider} from 'react-intl';
+import {IntlProvider} from 'react-intl'
 
 injectTapEventPlugin();
 
-let store = createStore(reducers);
+const store = createStore(reducers, applyMiddleware(thunk));
 
 store.dispatch(addTodo('Learn about actions'));
 store.dispatch(addTodo('Learn about reducers'));
@@ -36,7 +37,7 @@ ReactDOM.render(
     <IntlProvider locale="en">
         <MuiThemeProvider>
             <Provider store={store}>
-                <App/>
+                <Root />
             </Provider>
         </MuiThemeProvider>
     </IntlProvider>,
