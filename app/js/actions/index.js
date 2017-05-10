@@ -1,16 +1,41 @@
-/**
- * Created by dinhceo on 08/04/2017.
- */
-import {ADD_TODO, TOGGLE_TODO, RESET_TODO} from './todoActionType';
+import {INIT_TODO, ADD_TODO, TOGGLE_TODO, RESET_TODO} from './todoActionType';
 import {VisibilityFilters, SET_VISIBILITY_FILTER} from  './searchTodoType';
 
+import axios from 'axios'
+import NProgress from 'nprogress'
 
-export function addTodo(text) {
-    return {
-        type : ADD_TODO,
-        text
-    }
-}
+
+
+export const initTodo = () => (dispatch) => {
+    NProgress.start();
+   return axios.get('http://localhost:3003/api/get-data')
+        .then(function (response) {
+            NProgress.done();
+            console.log('fire ajax = ', response.data);
+            return dispatch({
+                type : INIT_TODO,
+                data : response.data
+            })
+        })
+        .catch(function (error) {
+            NProgress.done();
+        });
+};
+
+export const addTodo = (text) => (dispatch) =>{
+    axios.put(`http://localhost:3003/api/${text}`)
+        .then(function (response) {
+            console.log('fire ajax = ', response.data);
+            return dispatch({
+                type : ADD_TODO,
+                data : response.data
+            })
+        })
+        .catch(function (error) {
+            console.log(error);
+        });
+
+};
 
 export function resetTodo() {
     return {
@@ -18,10 +43,10 @@ export function resetTodo() {
     }
 }
 
-export function toggleTodo(index) {
+export function toggleTodo(id) {
     return {
         type : TOGGLE_TODO,
-        index
+        id
     }
 }
 

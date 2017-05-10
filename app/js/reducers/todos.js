@@ -1,23 +1,20 @@
-/**
- * Created by dinhceo on 08/04/2017.
- */
-import {ADD_TODO, TOGGLE_TODO, RESET_TODO} from '../actions/todoActionType';
+import {INIT_TODO, ADD_TODO, TOGGLE_TODO, RESET_TODO} from '../actions/todoActionType';
 
 
 function todos(state = [], action) {
     switch (action.type) {
+        case INIT_TODO:
+            return action.data;
+            break;
         case ADD_TODO:
             return [
                 ...state,
-                {
-                    text : action.text,
-                    completed : false
-                }
+                action.data
             ];
             break;
         case TOGGLE_TODO:
-            return state.map((todo, index) => {
-                if (index === action.index) {
+            return state.map((todo) => {
+                if (todo.id === action.id) {
                     return Object.assign({}, todo, {
                         completed : !todo.completed
                     })

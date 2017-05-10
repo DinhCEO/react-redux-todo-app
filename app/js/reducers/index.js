@@ -1,14 +1,12 @@
-/**
- * Created by dinhceo on 08/04/2017.
- */
-import {combineReducers} from 'redux';
-import todos from './todos';
-import visibilityFilter from './visibilityFilter';
+import {combineReducers} from 'redux'
+import todos from './todos'
+import visibilityFilter from './visibilityFilter'
+import { reducer as formReducer } from 'redux-form'
 
-
-const appReducers = combineReducers({
+const rootReducers = combineReducers({
     visibilityFilter,
-    todos
+    todos,
+    form: formReducer
 });
 
-export default appReducers;
+export default rootReducers;

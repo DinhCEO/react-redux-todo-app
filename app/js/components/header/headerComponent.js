@@ -10,7 +10,7 @@ class Header extends React.Component {
     render() {
         return (
             <AppBar
-                title="Todo App"
+                title="reactjs + redux"
                 iconClassNameRight="muidocs-icon-navigation-expand-more"/>
         );
     }

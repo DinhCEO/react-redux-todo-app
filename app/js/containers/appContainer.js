@@ -1,10 +1,7 @@
-/**
- * Created by dinhceo on 11/04/2017.
- */
 import React from 'react'
 import {connect} from 'react-redux'
-import AppComponent from '../components/appComponent'
-import {addTodo, toggleTodo, resetTodo, setVisibilityFilter} from '../actions/index'
+import AppComponent from '../components/appTodo/appTodoComponent'
+import {initTodo, addTodo, toggleTodo, resetTodo, setVisibilityFilter} from '../actions/index'
 import {VisibilityFilters} from '../actions/searchTodoType'
 
 
@@ -23,17 +20,18 @@ const getVisibleTodos = (todos, filter) => {
 };
 
 const mapDispatchToProps = (dispatch) => ({
+    initTodo : () => dispatch(initTodo()),
     addTodo : (text) => {
         dispatch(addTodo(text))
     },
-    toggleTodo : (index) => {
-        dispatch(toggleTodo(index))
+    toggleTodo : (id) => {
+        dispatch(toggleTodo(id))
     },
     filter : (filter) => {
         dispatch(setVisibilityFilter(filter))
     },
     resetTodo : () => {
-        dispatch(resetTodo());
+        dispatch(resetTodo())
     }
 });
 
